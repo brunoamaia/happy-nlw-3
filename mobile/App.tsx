@@ -1,12 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <MapView 
+        provider={PROVIDER_GOOGLE}
+        style={styles.map}
+        initialRegion={{
+          latitude: -18.1705291,
+          longitude:-47.9449025,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01
+        }}
+      />
     </View>
   );
 }
@@ -14,8 +23,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
 });
