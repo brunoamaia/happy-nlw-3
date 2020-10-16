@@ -10,7 +10,7 @@ import api from '../services/api';
 
 interface OrphanageProps {
   id: number;
-  mame: string;
+  name: string;
   latitude: number;
   longitude: number;
 }
@@ -24,8 +24,8 @@ export default function OrphanagesMap() {
   }, [])
 
   const navigation = useNavigation();
-  function handleNavigateToOrphanageDetails () {
-    navigation.navigate('OrphanageDetails')
+  function handleNavigateToOrphanageDetails (id: number) {
+    navigation.navigate('OrphanageDetails', { id })
   }
 
   function handleNavigateToCreateOrphanage() {
@@ -59,9 +59,9 @@ export default function OrphanagesMap() {
                 longitude: orphanage.longitude
               }}
             >
-              <Callout tooltip onPress={handleNavigateToOrphanageDetails}>
+              <Callout tooltip onPress={() => handleNavigateToOrphanageDetails(orphanage.id)}>
                 <View style={styles.calloutContainer}>
-                  <Text style={styles.calloutText}>{orphanage.mame}</Text>
+                  <Text style={styles.calloutText}>{orphanage.name}</Text>
                 </View>
               </Callout>
             </Marker>
