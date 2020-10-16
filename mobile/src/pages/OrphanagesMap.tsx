@@ -40,8 +40,8 @@ export default function OrphanagesMap() {
         initialRegion={{
           latitude: -18.1705291,
           longitude:-47.9449025,
-          latitudeDelta: 0.008,
-          longitudeDelta: 0.008
+          latitudeDelta: 0.02,
+          longitudeDelta: 0.02
         }}
       >
 
