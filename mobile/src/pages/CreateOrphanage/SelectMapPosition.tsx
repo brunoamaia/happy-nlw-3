@@ -10,7 +10,7 @@ import mapMarkerImg from '../../images/map-marker.png';
 export default function SelectMapPosition() {
   const navigation = useNavigation();
   function handleNextStep() {
-    navigation.navigate('OrphanageData');
+    navigation.navigate('OrphanageData', { position });
   }
 
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
@@ -45,7 +45,7 @@ export default function SelectMapPosition() {
           <Text style={styles.nextButtonText}>Próximo</Text>
         </RectButton>
       )}
-      
+
     </View>
   )
 }
