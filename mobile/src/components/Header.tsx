@@ -5,10 +5,11 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons'
 
 interface HeaderProps {
-  title: string
+  title: string;
+  showCancel?: boolean
 }
 
-export default function Header(props: HeaderProps ) {
+export default function Header({title, showCancel=true}: HeaderProps ) {
   const navigation = useNavigation();
 
   function handleGoBackToAppHomepage() {
@@ -21,11 +22,15 @@ export default function Header(props: HeaderProps ) {
         <Feather name="arrow-left" size={24} color="#15B6D6" />
       </BorderlessButton>
       
-      <Text style={styles.title} > {props.title} </Text>
+      <Text style={styles.title} > {title} </Text>
 
-      <BorderlessButton onPress={handleGoBackToAppHomepage}>
-        <Feather name="x" size={24} color="#FF669D" />
-      </BorderlessButton>
+      { showCancel ? (
+        <BorderlessButton onPress={handleGoBackToAppHomepage}>
+          <Feather name="x" size={24} color="#FF669D" />
+        </BorderlessButton>
+      ) : (
+        <View />
+      )}
     </View>
   );
 }
